@@ -23,7 +23,7 @@ public class VendingMachineImpl implements VendingMachine {
     public String selectProduct(int id) {
         for (int i = 0; i < productCount; i++) {
             if (products[i].getId() == id) {
-                return "Selected: " + products[i].getProductName() + " for" + products[i].getPrice() + "kr";
+                return "Selected: " + products[i].getProductName() + " for" + products[i].getPrice() + " kr";
             }
         }
         return "Product not found.";
@@ -34,7 +34,7 @@ public class VendingMachineImpl implements VendingMachine {
         for (int i = 0; i < productCount; i++) {
             if (products[i].getId() == id) {
                 if (depositPool >= products[i].getPrice()) {
-                    depositPool -= products[i].getPrice();
+                    depositPool -= (int) products[i].getPrice();
                     return "Dispensed: " + products[i].getProductName();
                 } else {
                     return "Insufficient balance.";
