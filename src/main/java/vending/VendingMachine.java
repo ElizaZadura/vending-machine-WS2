@@ -9,5 +9,5 @@ public interface VendingMachine {
     void addCurrency(double amount);
     int getBalance();
     Product request(int id);
-    String[] getProduc();zz
+    String[] getProduct();
 }
