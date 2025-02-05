@@ -3,8 +3,8 @@ package vending;
 public class Lollipop extends Product {
     private static boolean isGood;
     private static Size size;
-    public Lollipop(int id, double price, String productName) {
-        super(id, price, productName);
+    public Lollipop(double price, String productName) {
+        super(price, productName);
         super.setProductName("Lollipop");
         super.setPrice(30.00);
     }
@@ -51,6 +51,6 @@ public class Lollipop extends Product {
 
     @Override
     public String use() {
-        return "";
+        return "Such a yummy lollipop, all gone now";
     }
 }

@@ -1,21 +1,26 @@
 package vending;
 
 public class Crunchie extends Product {
-    protected Crunchie(int id, double price, String productName) {
-        super(id, price, productName);
+    private boolean isNuts;
+    protected Crunchie(double price, String productName) {
+        super(price, productName);
     }
 
-    protected Crunchie(int id) {
-        super(id);
+    public boolean isNuts() {
+        return isNuts;
+    }
+
+    public void setNuts(boolean nuts) {
+        isNuts = nuts;
     }
 
     @Override
     public String examine() {
-        return "";
+        return super.toString();
     }
 
     @Override
     public String use() {
-        return "";
+        return isNuts() ? "Don't eat me, I'm nutty!" : "All nut free";
     }
 }

@@ -6,11 +6,11 @@ public class Main {
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
-    Product product = new Lollipop(1, 30.00, "Lollipop");
+    Product product = new Lollipop(30.00, "Lollipop");
         System.out.println(product.examine());
-        Product product2 = new Lollipop(2, 45.00, "Lollipop");
+        Product product2 = new Lollipop(45.00, "Lollipop");
         System.out.println(product2.examine());
-        Product product3 = new Crunchie(3, 50.00, "Lollipop");
+        Product product3 = new Crunchie( 50.00, "Lollipop");
 
         var vendingMachine = new VendingMachineImpl(10);
         vendingMachine.addProduct(product);

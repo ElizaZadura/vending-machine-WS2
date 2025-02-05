@@ -12,10 +12,6 @@ public abstract class Product {
         setProductName(productName);
     }
 
-    protected Product(int id) {
-        this.id = id;
-    }
-
     public int getId() {
         return id;
     }
