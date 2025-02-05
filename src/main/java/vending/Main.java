@@ -19,10 +19,10 @@ public class Main {
         System.out.println(vendingMachine.selectProduct(1));
         System.out.println(vendingMachine.useProduct(1));
 
-        vendingMachine.addCurrency(100.00);
+/*        vendingMachine.addCurrency(100.00);
         vendingMachine.selectProduct(1);
         vendingMachine.useProduct(1);
-        vendingMachine.endSession();
+        vendingMachine.endSession();*/
     }
 
 

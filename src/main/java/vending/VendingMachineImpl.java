@@ -1,7 +1,7 @@
 package vending;
 
 public class VendingMachineImpl implements VendingMachine {
-    private final Product[] products;
+    private Product[] products;
     private int productCount; // To keep track of the number of products
     private int depositPool;
 
@@ -12,12 +12,15 @@ public class VendingMachineImpl implements VendingMachine {
     }
 
     public void addProduct(Product product) {
-        if (productCount < products.length) {
-            products[productCount++] = product; // Add product and increment count
-        } else {
-            throw new IllegalStateException("Cannot add more products, array is full.");
+        if (productCount >= products.length) {
+            // Resize the array
+            Product[] newProducts = new Product[products.length * 2]; // Double the size
+            System.arraycopy(products, 0, newProducts, 0, products.length);
+            products = newProducts;
         }
+        products[productCount++] = product; // Add product and increment count
     }
+
 
     @Override
     public String selectProduct(int id) {
