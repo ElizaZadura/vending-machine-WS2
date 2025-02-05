@@ -74,4 +74,14 @@ public class VendingMachineImpl implements VendingMachine {
     public int getBalance() {
         return depositPool; // Return the current balance
     }
+
+    @Override
+    public Product request(int id) {
+        return null;
+    }
+
+    @Override
+    public String[] getProduc() {
+        return new String[0];
+    }
 }
