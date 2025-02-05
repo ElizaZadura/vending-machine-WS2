@@ -1,26 +1,29 @@
 package vending;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class VendingMachineImpl implements VendingMachine {
-    private final List<Product> products;
+    private final Product[] products;
+    private int productCount; // To keep track of the number of products
     private int depositPool;
 
-    public VendingMachineImpl() {
-        this.products = new ArrayList<>();
+    public VendingMachineImpl(int capacity) {
+        this.products = new Product[capacity]; // Initialize the array with a specified capacity
+        this.productCount = 0; // Start with no products
         this.depositPool = 0;
     }
 
     public void addProduct(Product product) {
-        products.add(product);
+        if (productCount < products.length) {
+            products[productCount++] = product; // Add product and increment count
+        } else {
+            throw new IllegalStateException("Cannot add more products, array is full.");
+        }
     }
 
     @Override
     public String selectProduct(int id) {
-        for (Product product : products) {
-            if (product.getId() == id) {
-                return "Selected: " + product.getProductName() + " for $" + product.getPrice();
+        for (int i = 0; i < productCount; i++) {
+            if (products[i].getId() == id) {
+                return "Selected: " + products[i].getProductName() + " for" + products[i].getPrice() + "kr";
             }
         }
         return "Product not found.";
@@ -28,11 +31,11 @@ public class VendingMachineImpl implements VendingMachine {
 
     @Override
     public String useProduct(int id) {
-        for (Product product : products) {
-            if (product.getId() == id) {
-                if (depositPool >= product.getPrice()) {
-                    depositPool -= product.getPrice();
-                    return "Dispensed: " + product.getProductName();
+        for (int i = 0; i < productCount; i++) {
+            if (products[i].getId() == id) {
+                if (depositPool >= products[i].getPrice()) {
+                    depositPool -= products[i].getPrice();
+                    return "Dispensed: " + products[i].getProductName();
                 } else {
                     return "Insufficient balance.";
                 }
@@ -44,8 +47,8 @@ public class VendingMachineImpl implements VendingMachine {
     @Override
     public String getDescription() {
         StringBuilder description = new StringBuilder("Available products:\n");
-        for (Product product : products) {
-            description.append(product.toString()).append("\n");
+        for (int i = 0; i < productCount; i++) {
+            description.append(products[i].toString()).append("\n");
         }
         return description.toString();
     }
@@ -57,9 +60,9 @@ public class VendingMachineImpl implements VendingMachine {
 
     @Override
     public String getDescription(int id) {
-        for (Product product : products) {
-            if (product.getId() == id) {
-                return product.toString();
+        for (int i = 0; i < productCount; i++) {
+            if (products[i].getId() == id) {
+                return products[i].toString();
             }
         }
         return "Product not found.";
@@ -82,6 +85,10 @@ public class VendingMachineImpl implements VendingMachine {
 
     @Override
     public String[] getProduct() {
-        return new String[0];
+        String[] productDescriptions = new String[productCount];
+        for (int i = 0; i < productCount; i++) {
+            productDescriptions[i] = "ID: " + products[i].getId() + ", Name: " + products[i].getProductName() + ", Price: " + products[i].getPrice();
+        }
+        return productDescriptions;
     }
 }
