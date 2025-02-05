@@ -6,7 +6,7 @@ public abstract class Product {
     private double price;
     private String productName;
 
-    protected Product(int id, double price, String productName) {
+    protected Product(double price, String productName) {
         this.id = ++idCounter;
         setPrice(price);
         setProductName(productName);

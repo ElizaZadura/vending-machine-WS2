@@ -10,10 +10,12 @@ public class Main {
         System.out.println(product.examine());
         Product product2 = new Lollipop(2, 45.00, "Lollipop");
         System.out.println(product2.examine());
+        Product product3 = new Crunchie(3, 50.00, "Lollipop");
 
         var vendingMachine = new VendingMachineImpl(10);
         vendingMachine.addProduct(product);
         vendingMachine.addProduct(product2);
+        vendingMachine.addProduct(product3);
         vendingMachine.addCurrency(100.00);
         System.out.println(vendingMachine.getDescription());
         System.out.println(vendingMachine.selectProduct(1));
