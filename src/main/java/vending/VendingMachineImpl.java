@@ -81,7 +81,7 @@ public class VendingMachineImpl implements VendingMachine {
     }
 
     @Override
-    public String[] getProduc() {
+    public String[] getProduct() {
         return new String[0];
     }
 }
